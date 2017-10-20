@@ -1,5 +1,9 @@
 import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
+import {Dish} from '../models/dish.model';
+import {Menu, MenuType} from '../models/menu.model';
+import {Post} from '../models/post.model';
+import {UserComment} from '../models/comment.model';
 import {Http, Headers} from '@angular/http';
 
 const USERNAME_KEY = 'signed-in-user-username';
@@ -85,7 +89,7 @@ export class DataService {
       });
   }
 
-  createDish(dish): Promise<any> {
+  createDish(dish: Dish): Promise<any> {
     const data = {data: dish};
     return this.http.post(DISHES_URL, JSON.stringify(data), {
       headers: this.headers
@@ -106,7 +110,7 @@ export class DataService {
       });
   }
 
-  getMenusByType(type): Promise<any> {
+  getMenusByType(type: MenuType): Promise<any> {
     const url = MENUS_URL + '/' + type;
     return this.http.get(url, {
       headers: this.headers
@@ -117,7 +121,7 @@ export class DataService {
       });
   }
 
-  createMenu(menu): Promise<any> {
+  createMenu(menu: Menu): Promise<any> {
     const data = {data: menu};
     return this.http.post(MENUS_URL, JSON.stringify(data), {
       headers: this.headers
@@ -148,7 +152,7 @@ export class DataService {
       });
   }
 
-  getPostById(id): Promise<any> {
+  getPostById(id: string): Promise<any> {
     const url = POSTS_URL + '/' + id;
     return this.http.get(url, {
       headers: this.headers
@@ -159,7 +163,7 @@ export class DataService {
       });
   }
 
-  createPost(post): Promise<any> {
+  createPost(post: Post): Promise<any> {
     const data = {data: post};
     return this.http.post(POSTS_URL, JSON.stringify(data), {
       headers: this.headers
@@ -170,7 +174,7 @@ export class DataService {
       });
   }
 
-  getCommentsByPost(postId): Promise<any> {
+  getCommentsByPost(postId: string): Promise<any> {
     const url = POSTS_URL + '/' + postId + '/comments';
     return this.http.get(url, {
       headers: this.headers
@@ -181,7 +185,7 @@ export class DataService {
       });
   }
 
-  addCommentToPost(comment, postId): Promise<any> {
+  addCommentToPost(comment: UserComment, postId: string): Promise<any> {
     const data = {data: comment};
     const url = POSTS_URL + '/' + postId + '/comments';
     return this.http.post(url, JSON.stringify(data), {
@@ -193,7 +197,7 @@ export class DataService {
       });
   }
 
-  searchPosts(query): Promise<any> {
+  searchPosts(query: string): Promise<any> {
     const params = new URLSearchParams();
     params.set('q', query);
     const data = {
