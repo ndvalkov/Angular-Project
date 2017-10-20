@@ -8,6 +8,7 @@ import {HomeModule} from './home/home.module';
 import {MenuModule} from './menu/menu.module';
 import {PostsModule} from './posts/posts.module';
 import {LocationModule} from './location/location.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {LocationModule} from './location/location.module';
     HomeModule,
     MenuModule,
     PostsModule,
-    LocationModule
+    LocationModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

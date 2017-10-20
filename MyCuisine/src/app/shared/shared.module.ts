@@ -8,11 +8,13 @@ import { SliderComponent } from './slider/slider.component';
 import { SubheaderComponent } from './subheader/subheader.component';
 import { TitleComponent } from './title/title.component';
 import { AsideComponent } from './aside/aside.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    RouterModule
   ],
   declarations: [
     HeaderComponent,
