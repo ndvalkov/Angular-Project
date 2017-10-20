@@ -9,6 +9,7 @@ import { SubheaderComponent } from './subheader/subheader.component';
 import { TitleComponent } from './title/title.component';
 import { AsideComponent } from './aside/aside.component';
 import {RouterModule} from '@angular/router';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {RouterModule} from '@angular/router';
     SliderComponent,
     SubheaderComponent,
     TitleComponent,
-    AsideComponent
+    AsideComponent,
+    LoaderComponent
   ],
   exports: [
     HeaderComponent,
@@ -30,7 +32,8 @@ import {RouterModule} from '@angular/router';
     SliderComponent,
     SubheaderComponent,
     TitleComponent,
-    AsideComponent
+    AsideComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
