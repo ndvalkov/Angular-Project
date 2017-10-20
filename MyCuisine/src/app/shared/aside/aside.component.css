@@ -1,0 +1,9 @@
+aside .container-recent-posts {
+  border: 1px solid #e5e2c6;
+  border-radius: 10px;
+  background-color: white;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  padding-left: 23px;
+  min-width: 258px;
+}

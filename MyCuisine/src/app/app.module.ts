@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HomeModule} from './home/home.module';
-import { HeaderComponent } from './shared/header/header.component';
-import {HomeComponent} from './home/home.component';
+import {MenuModule} from './menu/menu.module';
+import {PostsModule} from './posts/posts.module';
+import {LocationModule} from './location/location.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,10 @@ import {HomeComponent} from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    MenuModule,
+    PostsModule,
+    LocationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
