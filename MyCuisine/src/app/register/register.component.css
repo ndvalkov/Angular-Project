@@ -35,3 +35,11 @@
   text-transform: uppercase;
   padding: 0;
 }
+
+.form-register pre {
+  font-family: 'League Gothic', san-serif, serif;
+  font-size: 15px;
+  color: rgb(146, 144, 124);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

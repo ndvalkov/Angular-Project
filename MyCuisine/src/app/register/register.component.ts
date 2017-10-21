@@ -2,6 +2,7 @@ import {Component, OnInit, Pipe, PipeTransform, ViewChild, ViewContainerRef} fro
 import {User} from '../models/user.model';
 import {DataService} from '../services/data.service';
 import {NotificationService} from '../services/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,13 +15,14 @@ export class RegisterComponent implements OnInit {
   @ViewChild('f') form: any;
   isLoading: boolean;
   options = {
-    position: ['bottom', 'left'],
+    position: ['bottom', 'right'],
     timeOut: 2000,
     lastOnBottom: true
   };
 
   constructor(private readonly dataService: DataService,
-              private readonly notificationService: NotificationService) {
+              private readonly notificationService: NotificationService,
+              private readonly router: Router) {
   }
 
   ngOnInit() {
@@ -38,11 +40,16 @@ export class RegisterComponent implements OnInit {
         })
         .catch(err => {
           this.isLoading = false;
-          console.log(err.body);
-          this.notificationService.showError(err.message);
+          this.notificationService.showError(err._body);
         });
 
       this.form.reset();
+    }
+  }
+
+  destroyed($event) {
+    if ($event.type !== 'error') {
+      this.router.navigate(['/home']);
     }
   }
 }
