@@ -14,9 +14,6 @@ import {DataService} from './services/data.service';
 import {NotificationService} from './services/notification.service';
 import {AuthGuardService} from './services/auth-guard.service';
 
-import {CapitalizePipe} from './shared/pipes/capitalize.pipe';
-import {MaskPasswordPipe} from './shared/pipes/mask-password.pipe';
-
 import {HomeModule} from './home/home.module';
 import {MenuModule} from './menu/menu.module';
 import {PostsModule} from './posts/posts.module';
@@ -29,9 +26,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent,
-    MaskPasswordPipe,
-    CapitalizePipe
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +41,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
     HttpModule,
     FormsModule
   ],
+  exports: [ SimpleNotificationsModule ],
   providers: [DataService, NotificationService, AuthGuardService],
   bootstrap: [AppComponent]
 })

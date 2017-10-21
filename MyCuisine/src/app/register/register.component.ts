@@ -1,4 +1,4 @@
-import {Component, OnInit, Pipe, PipeTransform, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from '../models/user.model';
 import {DataService} from '../services/data.service';
 import {NotificationService} from '../services/notification.service';
@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
         });
     }
   }
+
   destroyed($event) {
     if ($event.type !== 'error') {
       this.router.navigate(['/home']);

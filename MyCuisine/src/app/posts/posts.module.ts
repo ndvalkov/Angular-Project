@@ -7,7 +7,8 @@ import {SharedModule} from '../shared/shared.module';
 import {PostsRoutingModule} from './posts-routing.module';
 import { AddPostComponent } from './add-post/add-post.component';
 import {FormsModule} from '@angular/forms';
-import {SimpleNotificationsModule} from 'angular2-notifications/dist';
+import {PushNotificationsModule, SimpleNotificationsModule} from 'angular2-notifications/dist';
+import {NotificationService} from '../services/notification.service';
 
 @NgModule({
   imports: [
@@ -15,9 +16,11 @@ import {SimpleNotificationsModule} from 'angular2-notifications/dist';
     SharedModule,
     PostsRoutingModule,
     FormsModule,
-    SimpleNotificationsModule
+    SimpleNotificationsModule,
+    PushNotificationsModule
   ],
-  declarations: [PostComponent, CommentComponent, AllPostsComponent, AddPostComponent]
+  declarations: [PostComponent, CommentComponent, AllPostsComponent, AddPostComponent],
+  providers: [NotificationService]
 })
 export class PostsModule {
 }

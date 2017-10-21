@@ -23,29 +23,21 @@
             </div>
 
             <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Category
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{selectedCategory}}
                 <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li *ngFor="let category of categories">{{category}}</li>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li *ngFor="let category of categories">
+                  <a (click)="setCategory(category)">
+                    {{category | capitalize}}
+                  </a>
+                </li>
               </ul>
             </div>
-
-            <!--<div class="form-group col-md-6 col-sm-12" [ngClass]="{ 'has-danger': p.invalid && (p.dirty || p.touched),-->
-        <!--'has-success': p.valid && (p.dirty || p.touched) }">-->
-              <!--<label>Category</label>-->
-              <!--<input type="text"-->
-                     <!--class="form-control"-->
-                     <!--name="category"-->
-                     <!--[(ngModel)]="post.category"-->
-                     <!--minlength="8"-->
-                     <!--required-->
-                     <!--#p="ngModel">-->
-            <!--</div>-->
           </div>
 
           <div class="form-group">
             <label>Content</label>
-            <textarea rows="10" cols="50"
+            <textarea rows="10" cols="50" spellcheck="false"
                    class="form-control"
                    name="content"
                    [(ngModel)]="post.content"
@@ -53,7 +45,6 @@
                    required>
             </textarea>
           </div>
-
 
           <button type="submit" class="btn-submit" [disabled]="f.invalid">Create Post</button>
         </form>

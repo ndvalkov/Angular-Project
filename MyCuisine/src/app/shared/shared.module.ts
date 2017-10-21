@@ -10,6 +10,8 @@ import { TitleComponent } from './title/title.component';
 import { AsideComponent } from './aside/aside.component';
 import {RouterModule} from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
+import {CapitalizePipe} from './pipes/capitalize.pipe';
+import {MaskPasswordPipe} from './pipes/mask-password.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { LoaderComponent } from './loader/loader.component';
     SubheaderComponent,
     TitleComponent,
     AsideComponent,
-    LoaderComponent
+    LoaderComponent,
+    CapitalizePipe,
+    MaskPasswordPipe
   ],
   exports: [
     HeaderComponent,
@@ -33,7 +37,9 @@ import { LoaderComponent } from './loader/loader.component';
     SubheaderComponent,
     TitleComponent,
     AsideComponent,
-    LoaderComponent
+    LoaderComponent,
+    CapitalizePipe,
+    MaskPasswordPipe
   ]
 })
 export class SharedModule { }

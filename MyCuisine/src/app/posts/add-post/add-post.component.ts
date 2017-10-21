@@ -20,6 +20,7 @@ export class AddPostComponent implements OnInit {
   categories: string[] = Object.keys(PostCategory)
     .map(key => PostCategory[key])
     .filter(value => typeof value === 'string') as string[];
+  selectedCategory: string = this.categories[0];
 
   constructor(private readonly dataService: DataService,
               private readonly notificationService: NotificationService) { }
@@ -31,6 +32,7 @@ export class AddPostComponent implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
 
+      this.post.category = PostCategory[this.selectedCategory];
       this.dataService
         .createPost(this.post)
         .then(res => {
@@ -45,4 +47,7 @@ export class AddPostComponent implements OnInit {
     }
   }
 
+  setCategory(category: string) {
+    this.selectedCategory = category;
+  }
 }

@@ -15,6 +15,6 @@ export class NotificationService {
   }
 
   showWarning(msg: string) {
-    this.notificationsService.error('Warning!', msg);
+    this.notificationsService.warn('Warning!', msg);
   }
 }
