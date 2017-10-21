@@ -11,10 +11,14 @@ import {PostsModule} from './posts/posts.module';
 import {LocationModule} from './location/location.module';
 import {SharedModule} from './shared/shared.module';
 import {DataService} from './services/data.service';
+import {MaskPasswordPipe, RegisterComponent} from './register/register.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterComponent,
+    MaskPasswordPipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,8 @@ import {DataService} from './services/data.service';
     PostsModule,
     LocationModule,
     SharedModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
