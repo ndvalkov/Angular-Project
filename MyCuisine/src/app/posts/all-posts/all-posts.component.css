@@ -11,6 +11,11 @@
   margin-right: 28px;
 }
 
+.img-thumbnail {
+  width: 212px;
+  height: 213px;
+}
+
 .post-content {
   padding-right: 28px;
   font-family: 'Georgia', san-serif, serif;

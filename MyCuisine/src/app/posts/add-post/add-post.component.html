@@ -1,0 +1,67 @@
+<app-title></app-title>
+<app-subheader></app-subheader>
+
+<section class="container-add-post container-fluid">
+  <div class="row">
+
+    <div class="post col-md-12 col-sm-12">
+      <div class="container-form-add-post">
+        <form #f="ngForm" (ngSubmit)="onSubmit($event)" class="form-add-post col-md-6 col-sm-12">
+
+
+          <div class="row">
+            <div class="form-group col-md-6 col-sm-12" [ngClass]="{ 'has-danger': us.invalid && (us.dirty || us.touched),
+        'has-success': us.valid && (us.dirty || us.touched) }">
+              <label>Title</label>
+              <input type="text"
+                     class="form-control"
+                     name="title"
+                     [(ngModel)]="post.title"
+                     minlength="10"
+                     required
+                     #us="ngModel">
+            </div>
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Category
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let category of categories">{{category}}</li>
+              </ul>
+            </div>
+
+            <!--<div class="form-group col-md-6 col-sm-12" [ngClass]="{ 'has-danger': p.invalid && (p.dirty || p.touched),-->
+        <!--'has-success': p.valid && (p.dirty || p.touched) }">-->
+              <!--<label>Category</label>-->
+              <!--<input type="text"-->
+                     <!--class="form-control"-->
+                     <!--name="category"-->
+                     <!--[(ngModel)]="post.category"-->
+                     <!--minlength="8"-->
+                     <!--required-->
+                     <!--#p="ngModel">-->
+            <!--</div>-->
+          </div>
+
+          <div class="form-group">
+            <label>Content</label>
+            <textarea rows="10" cols="50"
+                   class="form-control"
+                   name="content"
+                   [(ngModel)]="post.content"
+                   minlength="15"
+                   required>
+            </textarea>
+          </div>
+
+
+          <button type="submit" class="btn-submit" [disabled]="f.invalid">Create Post</button>
+        </form>
+      </div>
+    </div>
+
+    <simple-notifications [options]="options"></simple-notifications>
+    <app-loader [isLoading]="isLoading"></app-loader>
+
+  </div>
+</section>

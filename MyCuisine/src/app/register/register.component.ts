@@ -45,24 +45,9 @@ export class RegisterComponent implements OnInit {
         });
     }
   }
-
   destroyed($event) {
     if ($event.type !== 'error') {
       this.router.navigate(['/home']);
     }
-  }
-}
-
-@Pipe({name: 'maskPassword'})
-export class MaskPasswordPipe implements PipeTransform {
-  transform(value: FormData): FormData {
-    const count = value.password ? value.password.length : 0;
-    value.password = '*'.repeat(count);
-    return value;
-  }
-}
-
-export class FormData {
-  constructor(public email, public username, public password) {
   }
 }
