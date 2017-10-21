@@ -1,6 +1,7 @@
-import {Component, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform, ViewChild, ViewContainerRef} from '@angular/core';
 import {User} from '../models/user.model';
 import {DataService} from '../services/data.service';
+import {NotificationService} from '../services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +13,15 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   @ViewChild('f') form: any;
   isLoading: boolean;
+  options = {
+    position: ['bottom', 'left'],
+    timeOut: 2000,
+    lastOnBottom: true
+  };
 
-  constructor(private dataService: DataService) { }
+  constructor(private readonly dataService: DataService,
+              private readonly notificationService: NotificationService) {
+  }
 
   ngOnInit() {
   }
@@ -26,9 +34,12 @@ export class RegisterComponent implements OnInit {
         .register(this.user)
         .then(res => {
           this.isLoading = false;
+          this.notificationService.showSuccess('Registered successfully');
         })
         .catch(err => {
-          console.log(err);
+          this.isLoading = false;
+          console.log(err.body);
+          this.notificationService.showError(err.message);
         });
 
       this.form.reset();

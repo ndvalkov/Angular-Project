@@ -151,18 +151,6 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@ng-dynamic-forms/core@^1.4.34":
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/@ng-dynamic-forms/core/-/core-1.4.34.tgz#523a2419416ee60d5a50711c45da3445002bed8d"
-
-"@ng-dynamic-forms/ui-bootstrap@^1.4.34":
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/@ng-dynamic-forms/ui-bootstrap/-/ui-bootstrap-1.4.34.tgz#835d6c03fbaddd1957af546a4eaffdcd53502c63"
-
-"@ng-dynamic-forms/ui-ng-bootstrap@^1.4.34":
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/@ng-dynamic-forms/ui-ng-bootstrap/-/ui-ng-bootstrap-1.4.34.tgz#f4f01c2dae257c131166ca1422bcce13715c361b"
-
 "@ngtools/json-schema@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -287,6 +275,10 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
+angular2-notifications@^0.7.8:
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/angular2-notifications/-/angular2-notifications-0.7.8.tgz#ecbcb95a8d2d402af94a9a080d6664c70d33a029"
 
 ansi-escapes@^3.0.0:
   version "3.0.0"
@@ -3407,6 +3399,10 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ng2-toastr@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/ng2-toastr/-/ng2-toastr-4.1.2.tgz#1b452f07139961c38f866c6e24a06247efa21b11"
 
 ngx-bootstrap@^1.9.3:
   version "1.9.3"
