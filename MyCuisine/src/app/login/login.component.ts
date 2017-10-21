@@ -1,16 +1,15 @@
-import {Component, OnInit, Pipe, PipeTransform, ViewChild, ViewContainerRef} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {User} from '../models/user.model';
 import {DataService} from '../services/data.service';
 import {NotificationService} from '../services/notification.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
-  email: string;
+export class LoginComponent implements OnInit {
   user: User = new User();
   @ViewChild('f') form: any;
   isLoading: boolean;
@@ -19,11 +18,9 @@ export class RegisterComponent implements OnInit {
     timeOut: 2000,
     lastOnBottom: true
   };
-
   constructor(private readonly dataService: DataService,
               private readonly notificationService: NotificationService,
-              private readonly router: Router) {
-  }
+              private readonly router: Router) { }
 
   ngOnInit() {
   }
@@ -33,10 +30,10 @@ export class RegisterComponent implements OnInit {
       this.isLoading = true;
 
       this.dataService
-        .register(this.user)
+        .signIn(this.user)
         .then(res => {
           this.isLoading = false;
-          this.notificationService.showSuccess('Registered successfully');
+          this.notificationService.showSuccess('Logged in successfully');
           this.form.reset();
         })
         .catch(err => {
@@ -50,19 +47,5 @@ export class RegisterComponent implements OnInit {
     if ($event.type !== 'error') {
       this.router.navigate(['/home']);
     }
-  }
-}
-
-@Pipe({name: 'maskPassword'})
-export class MaskPasswordPipe implements PipeTransform {
-  transform(value: FormData): FormData {
-    const count = value.password ? value.password.length : 0;
-    value.password = '*'.repeat(count);
-    return value;
-  }
-}
-
-export class FormData {
-  constructor(public email, public username, public password) {
   }
 }

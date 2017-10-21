@@ -1,24 +1,10 @@
 <app-title></app-title>
 <app-subheader></app-subheader>
 
-<section class="container-register container-fluid">
+<section class="container-login container-fluid">
 
   <div class="row">
-    <form #f="ngForm" (ngSubmit)="onSubmit($event)" class="form-register col-md-6 col-sm-12">
-      <div class="form-group"
-           [ngClass]="{
-      'has-danger': em.invalid && (em.dirty || em.touched),
-      'has-success': em.valid && (em.dirty || em.touched) }">
-        <label>Email</label>
-        <input type="email"
-               class="form-control"
-               name="email"
-               [(ngModel)]="email"
-               required
-               pattern="[^ @]*@[^ @]*"
-               #em="ngModel">
-      </div>
-
+    <form #f="ngForm" (ngSubmit)="onSubmit($event)" class="form-login col-md-6 col-sm-12">
       <div class="form-group"
            [ngClass]="{
         'has-danger': us.invalid && (us.dirty || us.touched),
@@ -46,14 +32,7 @@
                required
                #p="ngModel">
       </div>
-
-      <pre>{{f.value | maskPassword | json }}</pre>
-
-      <div class="form-control-feedback"
-           *ngIf="em.errors && (em.dirty || em.touched)">
-      </div>
-
-      <button type="submit" class="btn-submit" [disabled]="f.invalid">Register</button>
+      <button type="submit" class="btn-submit" [disabled]="f.invalid">Login</button>
     </form>
 
   </div>

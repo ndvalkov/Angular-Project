@@ -18,12 +18,14 @@ import {PostsModule} from './posts/posts.module';
 import {LocationModule} from './location/location.module';
 import {SharedModule} from './shared/shared.module';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    MaskPasswordPipe
+    MaskPasswordPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
