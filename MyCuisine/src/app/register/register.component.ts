@@ -1,5 +1,6 @@
 import {Component, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
 import {User} from '../models/user.model';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-register',
@@ -10,15 +11,26 @@ export class RegisterComponent implements OnInit {
   email: string;
   user: User = new User();
   @ViewChild('f') form: any;
+  isLoading: boolean;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
 
   onSubmit($event) {
     if (this.form.valid) {
-      // submt form
+      this.isLoading = true;
+
+      this.dataService
+        .register(this.user)
+        .then(res => {
+          this.isLoading = false;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
       this.form.reset();
     }
   }

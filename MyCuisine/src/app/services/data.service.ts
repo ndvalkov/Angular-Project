@@ -32,14 +32,14 @@ export class DataService {
       passHash: (user.username + user.password).toString(),
     };
 
-    const data = {data: reqUser};
+    const data = reqUser;
 
     return this.http.post(REGISTER_URL, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        const regUser = resp.json();
+        const regUser = resp.json().result;
         localStorage.setItem(USERNAME_KEY, regUser.username);
         localStorage.setItem(AUTH_KEY, regUser.authKey);
         return {
@@ -54,14 +54,14 @@ export class DataService {
       passHash: (user.username + user.password).toString(),
     };
 
-    const data = {data: reqUser};
+    const data = reqUser;
 
     return this.http.put(SIGNIN_URL, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        const signedUser = resp.json();
+        const signedUser = resp.json().result;
         localStorage.setItem(USERNAME_KEY, signedUser.username);
         localStorage.setItem(AUTH_KEY, signedUser.authKey);
         return signedUser;
@@ -87,18 +87,18 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
   createDish(dish: Dish): Promise<any> {
-    const data = {data: dish};
+    const data = dish;
     return this.http.post(DISHES_URL, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result();
       });
   }
 
@@ -108,7 +108,7 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
@@ -119,29 +119,28 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
   createMenu(menu: Menu): Promise<any> {
-    const data = {data: menu};
+    const data = menu;
     return this.http.post(MENUS_URL, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
   getAllPosts(): Promise<any> {
-    console.log(POSTS_URL);
     return this.http.get(POSTS_URL, {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
@@ -151,7 +150,7 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
@@ -162,18 +161,18 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
   createPost(post: Post): Promise<any> {
-    const data = {data: post};
+    const data = post;
     return this.http.post(POSTS_URL, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
@@ -184,19 +183,19 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
   addCommentToPost(comment: UserComment, postId: string): Promise<any> {
-    const data = {data: comment};
+    const data = comment;
     const url = POSTS_URL + '/' + postId + '/comments';
     return this.http.post(url, JSON.stringify(data), {
       headers: this.headers
     })
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 
@@ -210,7 +209,7 @@ export class DataService {
     return this.http.get(POSTS_SEARCH_URL, data)
       .toPromise()
       .then(resp => {
-        return resp.json();
+        return resp.json().result;
       });
   }
 }
