@@ -9,13 +9,15 @@ import {Http, Headers} from '@angular/http';
 const USERNAME_KEY = 'signed-in-user-username';
 const AUTH_KEY = 'signed-in-user-auth-key';
 
-const REGISTER_URL = 'api/users';
-const SIGNIN_URL = 'api/users/auth';
-const DISHES_URL = 'api/dishes';
-const MENUS_URL = 'api/menus';
-const POSTS_URL = 'api/posts';
-const POSTS_SEARCH_URL = 'api/search/posts';
-const COMMENTS_URL = 'api/posts/comments';
+// TODO: Add base url to global config
+const BASE_URL = 'http://localhost:3001';
+const REGISTER_URL = BASE_URL + '/' + 'api/users';
+const SIGNIN_URL = BASE_URL + '/' + 'api/users/auth';
+const DISHES_URL = BASE_URL + '/' + 'api/dishes';
+const MENUS_URL = BASE_URL + '/' + 'api/menus';
+const POSTS_URL = BASE_URL + '/' + 'api/posts';
+const POSTS_SEARCH_URL = BASE_URL + '/' + 'api/search/posts';
+const COMMENTS_URL = BASE_URL + '/' + 'api/posts/comments';
 
 @Injectable()
 export class DataService {
@@ -133,6 +135,7 @@ export class DataService {
   }
 
   getAllPosts(): Promise<any> {
+    console.log(POSTS_URL);
     return this.http.get(POSTS_URL, {
       headers: this.headers
     })

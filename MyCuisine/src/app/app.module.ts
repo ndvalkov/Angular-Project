@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpModule} from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import {MenuModule} from './menu/menu.module';
 import {PostsModule} from './posts/posts.module';
 import {LocationModule} from './location/location.module';
 import {SharedModule} from './shared/shared.module';
+import {DataService} from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import {SharedModule} from './shared/shared.module';
     MenuModule,
     PostsModule,
     LocationModule,
-    SharedModule
+    SharedModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
