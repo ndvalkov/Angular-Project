@@ -14,13 +14,16 @@ import {CapitalizePipe} from './pipes/capitalize.pipe';
 import {MaskPasswordPipe} from './pipes/mask-password.pipe';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
+import { DecorateTitlePipe } from './pipes/decorate-title.pipe';
+import {SimpleNotificationsModule} from 'angular2-notifications/dist';
 
 @NgModule({
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
     RouterModule,
-    FormsModule
+    FormsModule,
+    SimpleNotificationsModule
   ],
   declarations: [
     HeaderComponent,
@@ -32,7 +35,8 @@ import {FormsModule} from '@angular/forms';
     LoaderComponent,
     CapitalizePipe,
     MaskPasswordPipe,
-    SearchComponent
+    SearchComponent,
+    DecorateTitlePipe
   ],
   exports: [
     HeaderComponent,
@@ -43,7 +47,8 @@ import {FormsModule} from '@angular/forms';
     AsideComponent,
     LoaderComponent,
     CapitalizePipe,
-    MaskPasswordPipe
+    MaskPasswordPipe,
+    DecorateTitlePipe
   ]
 })
 export class SharedModule { }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   isLoading: boolean;
   options = {
     position: ['bottom', 'right'],
-    timeOut: 2000,
+    timeOut: 1000,
     lastOnBottom: true
   };
   constructor(private readonly dataService: DataService,
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   destroyed($event) {
     if ($event.type !== 'error') {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home'], { queryParams: { 'refresh': 1 } });
     }
   }
 }

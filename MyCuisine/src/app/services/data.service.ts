@@ -81,6 +81,15 @@ export class DataService {
       !!localStorage.getItem(AUTH_KEY);
   }
 
+  getUser(): string {
+    return localStorage.getItem(USERNAME_KEY);
+  }
+
+  isAdmin(): boolean {
+    // TODO: Implement server-side check
+    return this.getUser() === 'niki';
+  }
+
   getDishes(): Promise<any> {
     return this.http.get(DISHES_URL, {
       headers: this.headers
