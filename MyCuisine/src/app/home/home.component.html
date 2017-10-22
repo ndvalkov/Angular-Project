@@ -9,24 +9,10 @@
     <div class="content-item recommendations col-md-4">
       <h3 class="recommendations-title">Chef's recommendations</h3>
       <ul class="recommendations-list list-group">
-
-        <li class="recommendations-item list-group-item">
-          <img class="food-image img-thumbnail pull-left" src="../../assets/images/food-placeholder-1.jpeg" alt="food"/>
-          <h5>Recommendation</h5>
-          <p>Descr</p>
-        </li>
-
-        <li class="recommendations-item list-group-item">
-          <img class="food-image img-thumbnail pull-left" src="../../assets/images/food-placeholder-3.jpeg" alt="food"/>
-          <h5>Recommendation</h5>
-          <p>Descr</p>
-        </li>
-
-
-        <li class="recommendations-item list-group-item">
-          <img class="food-image img-thumbnail pull-left" src="../../assets/images/food-placeholder-2.jpeg" alt="food"/>
-          <h5>Recommendation</h5>
-          <p>Descr</p>
+        <li  *ngFor="let recommendation of recommendations, let i = index" class="recommendations-item list-group-item">
+          <img class="food-image img-thumbnail pull-left" src="../../assets/images/food-placeholder-{{i % 3 + 1}}.jpeg" alt="food"/>
+          <h5>{{recommendation?.name}}</h5>
+          <p>{{recommendation?.description}}</p>
         </li>
       </ul>
     </div>
@@ -48,10 +34,8 @@
         <div class="testimonial-author-img pull-left">
           <img class="img-thumbnail" src="../../assets/images/user-avatar.png" alt="author image"/>
         </div>
-        <h3 class="testimonial-author">Testimonial Author</h3>
-        <p class="testimonial-article">Testimonial Content
-        </p>
-
+        <h3 class="testimonial-author">{{testimonial.author}}</h3>
+        <p class="testimonial-article">{{testimonialContent}}</p>
       </div>
     </div>
 

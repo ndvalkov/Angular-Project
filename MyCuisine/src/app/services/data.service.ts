@@ -14,6 +14,8 @@ const BASE_URL = 'http://localhost:3001';
 const REGISTER_URL = BASE_URL + '/' + 'api/users';
 const SIGNIN_URL = BASE_URL + '/' + 'api/users/auth';
 const DISHES_URL = BASE_URL + '/' + 'api/dishes';
+const RECOMMENDATIONS_URL = BASE_URL + '/' + 'api/recommendations';
+const TESTIMONIALS_URL = BASE_URL + '/' + 'api/testimonials';
 const MENUS_URL = BASE_URL + '/' + 'api/menus';
 const POSTS_URL = BASE_URL + '/' + 'api/posts';
 const POSTS_SEARCH_URL = BASE_URL + '/' + 'api/search/posts';
@@ -92,6 +94,26 @@ export class DataService {
 
   getDishes(): Promise<any> {
     return this.http.get(DISHES_URL, {
+      headers: this.headers
+    })
+      .toPromise()
+      .then(resp => {
+        return resp.json().result;
+      });
+  }
+
+  getRecommendations(): Promise<any> {
+    return this.http.get(RECOMMENDATIONS_URL, {
+      headers: this.headers
+    })
+      .toPromise()
+      .then(resp => {
+        return resp.json().result;
+      });
+  }
+
+  getTestimonials(): Promise<any> {
+    return this.http.get(TESTIMONIALS_URL, {
       headers: this.headers
     })
       .toPromise()
