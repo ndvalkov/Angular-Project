@@ -7,21 +7,85 @@
   padding-top: 43px;
 }
 
+.post {
+  margin-bottom: 23px;
+}
+
 .post-img {
-  margin-right: 28px;
+  margin-right: 11px;
 }
 
 .img-thumbnail {
-  width: 212px;
-  height: 213px;
+  width: 77px;
+  height: 80px;
+}
+
+.container-post {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
 }
 
 .post-content {
+  display: inline;
   padding-right: 28px;
   font-family: 'Georgia', san-serif, serif;
   font-size: 12px;
   color: rgb(113, 104, 81);
   line-height: 174%;
+  justify-content: center;
+}
+
+.container-post::after {
+  display: block;
+  content: '...';
+  width: 1em;
+  height: 1.5em;
+  background: rgba(255, 255, 255, 0);
+  position: absolute;
+  bottom: -13px;
+  right: -8px;
+  font-size: 33px;
+}
+
+.go-to-post {
+  text-decoration: none;
+}
+
+.go-to-post:hover, .post-content:hover {
+  opacity: 0.7;
+}
+
+.post-title {
+  font-family: 'League Gothic', san-serif, serif;
+  font-size: 22px;
+  color: rgb(68, 41, 23);
+}
+
+.post-sub {
+  margin-bottom: 8px;
+}
+
+.post-author, .post-category {
+  font-family: 'Georgia', san-serif, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgb(146, 144, 124);
+  padding-right: 10px;
+}
+
+.post-category {
+  text-transform: uppercase;
+  font-style: inherit;
+  font-weight: bold;
+}
+
+.no-posts {
+  font-family: 'League Gothic', san-serif, serif;
+  font-size: 32px;
+  color: rgb(202, 198, 161);
+  text-transform: uppercase;
+  margin-bottom: 23px;
 }
 
 /*Responsive*/
@@ -47,6 +111,24 @@
   .post-img {
     margin-right: 15px;
   }
+}
+
+.btn-add-post {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  font-size: 2rem;
+  color: #000000;
+  height: 38px;
+  margin-top: 9px;
+  padding-left: 23px;
+  padding-right: 23px;
+  font-family: "Georgia", sans-serif, serif;
+  background-color: white;
+  border-radius: 23px;
+  border-left-style: none;
+  border-right-style: none;
+  border-width: 0.8px;
 }
 
 @media (min-width: 576px) and (max-width: 991px) {

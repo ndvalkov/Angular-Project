@@ -16,6 +16,7 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from '@angular/forms';
 import { DecorateTitlePipe } from './pipes/decorate-title.pipe';
 import {SimpleNotificationsModule} from 'angular2-notifications/dist';
+import { ToPostCategoryPipe } from './pipes/to-post-category.pipe';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications/dist';
     CapitalizePipe,
     MaskPasswordPipe,
     SearchComponent,
-    DecorateTitlePipe
+    DecorateTitlePipe,
+    ToPostCategoryPipe
   ],
   exports: [
     HeaderComponent,
@@ -48,7 +50,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications/dist';
     LoaderComponent,
     CapitalizePipe,
     MaskPasswordPipe,
-    DecorateTitlePipe
+    DecorateTitlePipe,
+    ToPostCategoryPipe
   ]
 })
 export class SharedModule { }

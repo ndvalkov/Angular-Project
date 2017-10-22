@@ -1,44 +1,28 @@
-<app-title></app-title>
-<app-subheader></app-subheader>
+<app-title [title]="'Posts'" [subTitle]="'All blog posts'"></app-title>
+<app-subheader [navItemTop]="'All Posts'" [activePosition]="0" [searchPlaceholder]="'Search posts'"></app-subheader>
+
+<button class="btn-add-post" [routerLink]="['/posts/add']">Add Post</button>
 
 <section class="container-posts container-fluid">
   <div class="row">
+    <p *ngIf="posts.length === 0" class="no-posts">No posts in this section</p>
 
-    <div class="post col-md-9 col-sm-9">
+    <div *ngFor="let post of posts" class="post col-md-4">
       <div class="container-post">
+        <h5 class="post-title">{{post?.title}}</h5>
+        <div class="post-sub"><span class="post-author">{{post?.author}}</span><span class="post-category">{{post?.category | toPostCategory}}</span></div>
         <div class="post-img pull-left">
-          <img class="img-thumbnail" src="../../../assets/images/post-placeholder.jpeg" alt="post image"/>
+          <img class="img-thumbnail img-responsive" src="../../../assets/images/post-placeholder.jpeg"
+               alt="post image"/>
         </div>
-        <p class="post-content">Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi
-          amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion
-          desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot
-          green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water
-          chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress. Corn amaranth salsify bunya nuts
-          nori
-          azuki bean chickweed potato bell pepper artichoke.
-
-          Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed
-          pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter
-          purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama
-          salsify.
-
-          Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery
-          bitterleaf
-          wattle seed collard greens nori. Grape wattle seed kombu beetroot horseradish carrot squash brussels
-          sprout
-          chard.
-
-          Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi radish okra azuki bean corn fava bean
-          mustard tigernut jícama green bean celtuce collard greens avocado quandong fennel gumbo black-eyed pea.
-          Grape silver beet watercress potato tigernut corn groundnut. Chickweed okra pea winter purslane coriander
-          yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring
-          onion
-          azuki bean gourd. Gumbo kakadu plum komatsuna black-eyed pea green bean zucchini gourd winter purslane
-          silver beet rock melon radish asparagus spinach.
-        </p>
+        <a [routerLink]="['/posts/' + post?._id]" class="go-to-post" data-id="{{post?._id}}">
+          <p class="post-content">{{post?.content}}</p>
+        </a>
       </div>
-
     </div>
 
   </div>
 </section>
+
+<simple-notifications [options]="options"></simple-notifications>
+<app-loader [isLoading]="isLoading"></app-loader>
