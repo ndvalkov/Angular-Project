@@ -12,12 +12,15 @@ import {RouterModule} from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 import {CapitalizePipe} from './pipes/capitalize.pipe';
 import {MaskPasswordPipe} from './pipes/mask-password.pipe';
+import { SearchComponent } from './search/search.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   declarations: [
     HeaderComponent,
@@ -28,7 +31,8 @@ import {MaskPasswordPipe} from './pipes/mask-password.pipe';
     AsideComponent,
     LoaderComponent,
     CapitalizePipe,
-    MaskPasswordPipe
+    MaskPasswordPipe,
+    SearchComponent
   ],
   exports: [
     HeaderComponent,

@@ -2,17 +2,12 @@
   <div class="subheader-bar">
 
     <ul class="subheader-list">
-      <li class="top">Location</li>
+      <li class="top" [ngClass]="{active: activePosition === 0}">{{navItemTop}}</li>
+      <li class="category" *ngIf="!middleHidden" [ngClass]="{active: activePosition === 1}">{{navItemMiddle}}</li>
+      <li class="post" *ngIf="!bottomHidden" [ngClass]="{active: activePosition === 2}">{{navItemBottom}}</li>
     </ul>
 
-    <form class="search-form pull-right" action="" autocomplete="on">
-      <div>
-        <input type="text" id="site-search" name="q"
-               placeholder="Search this website..." minlength="4" maxlength="8"/>
-        <input id="submit-search" value="Search" type="submit">
-        <span class="validity"></span>
-      </div>
-    </form>
+    <app-search [placeholder]="searchPlaceholder" [minlength]="3" [maxLength]="30"></app-search>
 
   </div>
 </section>
