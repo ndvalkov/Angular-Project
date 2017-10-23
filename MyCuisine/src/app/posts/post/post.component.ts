@@ -15,7 +15,7 @@ export class PostComponent implements OnInit, OnDestroy {
   isLoading: boolean;
   options = {
     position: ['bottom', 'right'],
-    timeOut: 500,
+    timeOut: 1000,
     lastOnBottom: true
   };
 
@@ -61,8 +61,12 @@ export class PostComponent implements OnInit, OnDestroy {
 
   keyDownFunction($event: KeyboardEvent, text: string) {
     const ENTER_KEYCODE = 13;
+
     if ($event.keyCode === ENTER_KEYCODE) {
-      // console.log(text);
+      if (!this.dataService.hasUser()) {
+        this.notificationService.showWarning('Sorry, you need to be registered to add comments');
+        return;
+      }
       const userComment = new UserComment();
       userComment.comment = text;
       this.dataService
