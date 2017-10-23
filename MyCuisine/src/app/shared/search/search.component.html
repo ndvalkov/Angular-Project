@@ -1,6 +1,6 @@
-<form #f class="search-form pull-right" action="" autocomplete="on">
+<form #f class="search-form pull-right" action="" (ngSubmit)="onSubmit($event)" autocomplete="on">
   <div>
-    <input type="text" id="site-search" name="q" [ngModel]='searchQuery'
+    <input type="text" id="site-search" name="q" [(ngModel)]="searchQuery"
            [placeholder]="placeholder" [attr.minlength]="minlength" [attr.maxlength]="maxLength"/>
     <input id="submit-search" value="Search" type="submit">
     <span class="validity"></span>

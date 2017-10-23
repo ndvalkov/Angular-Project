@@ -4,7 +4,8 @@ import {Dish} from '../models/dish.model';
 import {Menu, MenuType} from '../models/menu.model';
 import {Post} from '../models/post.model';
 import {UserComment} from '../models/comment.model';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
+import { URLSearchParams } from '@angular/http';
 
 const USERNAME_KEY = 'signed-in-user-username';
 const AUTH_KEY = 'signed-in-user-auth-key';
@@ -230,14 +231,20 @@ export class DataService {
       });
   }
 
+  // TODO: Works correctly, need to fix server->search by more than one word bug
   searchPosts(query: string): Promise<any> {
-    const params = new URLSearchParams();
-    params.set('q', query);
-    const data = {
-      search: params
-    };
+    const myParams  = new URLSearchParams();
+    myParams.append('t', query);
+    const options = new RequestOptions({ params: myParams });
 
-    return this.http.get(POSTS_SEARCH_URL, data)
+    // const params = new URLSearchParams();
+    // params.set('t', query);
+    //
+    // const data = {
+    //   query: params
+    // };
+
+    return this.http.get(POSTS_SEARCH_URL, options)
       .toPromise()
       .then(resp => {
         return resp.json().result;

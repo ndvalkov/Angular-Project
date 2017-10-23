@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {DataService} from '../../services/data.service';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-search',
@@ -16,15 +18,21 @@ export class SearchComponent implements OnInit {
 
   searchQuery: string;
 
-  constructor() { }
+  constructor(private readonly dataService: DataService,
+              private readonly notificationService: NotificationService) {
+  }
 
   ngOnInit() {
   }
 
   onSubmit($event) {
-    if (this.form.valid) {
-      this.onSearchQuery.emit(this.searchQuery);
-      this.form.reset();
-    }
+    this.dataService
+      .searchPosts(this.searchQuery)
+      .then(res => {
+        this.onSearchQuery.emit(res);
+      })
+      .catch(err => {
+        this.notificationService.showError('Unable to process search query');
+      });
   }
 }
