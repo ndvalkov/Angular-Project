@@ -27,6 +27,13 @@
   margin-bottom: 23px;
 }
 
+.textarea-comment {
+  font-size: 1em;
+  margin: 0 auto;
+  padding: 10px;
+  color: rgb(113, 104, 81);
+}
+
 /*Responsive*/
 
 @media (max-width: 575px) {

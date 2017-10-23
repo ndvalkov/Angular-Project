@@ -11,7 +11,8 @@
     <div *ngIf="post" class="post col-md-9 col-sm-9">
       <div class="container-post">
         <div class="post-img pull-left">
-          <img class="img-thumbnail img-responsive" src="../../../assets/images/post-placeholder.jpeg" alt="post image"/>
+          <img class="img-thumbnail img-responsive" src="../../../assets/images/post-placeholder.jpeg"
+               alt="post image"/>
         </div>
         <p class="post-content">{{post?.content}}</p>
       </div>
@@ -20,12 +21,18 @@
         <h3 class="comments-title"><span class="comment-count">{{comments.length}}</span> comments</h3>
         <ul class="comments-list list-group">
           <app-comment *ngFor="let comment of comments"
-                       [commentAuthor]="comment.author" [commentDate]="comment.date">{{comment.comment}}</app-comment>
+                       [commentAuthor]="comment.author" [commentDate]="comment.date">{{comment.comment}}
+          </app-comment>
         </ul>
 
         <h3 class="leave-a-comment">Leave a comment</h3>
         <label>
-          <textarea class="textarea-comment" name="textarea-comment" rows="10" cols="50"></textarea>
+          <textarea #comment (keydown)="keyDownFunction($event, comment.value)"
+                    class="textarea-comment"
+                    name="textarea-comment"
+                    rows="10" cols="50"
+                    minlength="20"
+                    spellcheck="false"></textarea>
         </label>
 
       </div>
@@ -37,5 +44,5 @@
   </div>
 </section>
 
-<simple-notifications [options]="options"></simple-notifications>
+<simple-notifications [options]="options" (onDestroy)="destroyed($event)"></simple-notifications>
 <app-loader [isLoading]="isLoading"></app-loader>

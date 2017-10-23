@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {NotificationService} from '../../services/notification.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -15,7 +15,7 @@ export class PostComponent implements OnInit, OnDestroy {
   isLoading: boolean;
   options = {
     position: ['bottom', 'right'],
-    timeOut: 1000,
+    timeOut: 500,
     lastOnBottom: true
   };
 
@@ -28,7 +28,9 @@ export class PostComponent implements OnInit, OnDestroy {
 
   constructor(private readonly dataService: DataService,
               private readonly notificationService: NotificationService,
-              private readonly activatedRoute: ActivatedRoute) { }
+              private readonly router: Router,
+              private readonly activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.sub = this.activatedRoute.params.subscribe(params => {
@@ -55,5 +57,50 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  keyDownFunction($event: KeyboardEvent, text: string) {
+    const ENTER_KEYCODE = 13;
+    if ($event.keyCode === ENTER_KEYCODE) {
+      // console.log(text);
+      const userComment = new UserComment();
+      userComment.comment = text;
+      this.dataService
+        .addCommentToPost(userComment, this.id)
+        .then(res => {
+          this.isLoading = false;
+          this.notificationService.showSuccess('Comment added successfully');
+        })
+        .catch(err => {
+          this.isLoading = false;
+          this.notificationService.showError(err._body);
+        });
+    }
+  }
+
+  destroyed($event) {
+    if ($event.type !== 'error') {
+      // this.reloadPostPage();
+      this.reloadComments();
+    }
+  }
+
+  reloadComments() {
+    this.isLoading = true;
+    this.dataService.getCommentsByPost(this.id)
+      .then(res => {
+        this.isLoading = false;
+        this.comments = res;
+      })
+      .catch(err => {
+        this.isLoading = false;
+        this.notificationService.showError(err._body);
+      });
+  }
+
+  reloadPostPage() {
+    const url = '/posts/' + this.id;
+    // console.log(url);
+    this.router.navigate([url]);
   }
 }
