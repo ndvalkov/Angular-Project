@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 import { DecorateTitlePipe } from './pipes/decorate-title.pipe';
 import {SimpleNotificationsModule} from 'angular2-notifications/dist';
 import { ToPostCategoryPipe } from './pipes/to-post-category.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { ToPostCategoryPipe } from './pipes/to-post-category.pipe';
     MaskPasswordPipe,
     SearchComponent,
     DecorateTitlePipe,
-    ToPostCategoryPipe
+    ToPostCategoryPipe,
+    TruncatePipe
   ],
   exports: [
     HeaderComponent,
@@ -51,7 +53,8 @@ import { ToPostCategoryPipe } from './pipes/to-post-category.pipe';
     CapitalizePipe,
     MaskPasswordPipe,
     DecorateTitlePipe,
-    ToPostCategoryPipe
+    ToPostCategoryPipe,
+    TruncatePipe
   ]
 })
 export class SharedModule { }

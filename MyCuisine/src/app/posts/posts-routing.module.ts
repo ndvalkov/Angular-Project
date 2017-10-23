@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'all', pathMatch: 'full' },
   { path: 'add', component: AddPostComponent,  canActivate: [AuthGuardService]},
   { path: 'all', component: AllPostsComponent },
-  { path: ':ïd', component: PostComponent }
+  { path: ':id', component: PostComponent }
 ];
 
 @NgModule({

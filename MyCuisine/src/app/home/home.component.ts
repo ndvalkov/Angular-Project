@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  // TODO: Make pipe, use for recommendations too
   trimTestimonial(value, length, overflowSuffix): string {
     if (value.length <= length) {
       return value;

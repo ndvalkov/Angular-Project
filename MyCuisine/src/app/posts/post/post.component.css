@@ -19,6 +19,14 @@
   line-height: 174%;
 }
 
+.post-unavailable {
+  font-family: 'League Gothic', san-serif, serif;
+  font-size: 32px;
+  color: rgb(202, 198, 161);
+  text-transform: uppercase;
+  margin-bottom: 23px;
+}
+
 /*Responsive*/
 
 @media (max-width: 575px) {
