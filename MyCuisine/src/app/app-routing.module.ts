@@ -6,11 +6,13 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './admin/admin.component';
 import {AdminGuardService} from './services/admin-guard.service';
+import {DishesComponent} from './dishes/dishes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'location', component: LocationComponent},
+  {path: 'dishes', component: DishesComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'menu', loadChildren: './menu/menu.module#MenuModule'},

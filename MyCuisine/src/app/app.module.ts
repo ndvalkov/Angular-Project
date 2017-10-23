@@ -18,6 +18,7 @@ import {AdminGuardService} from './services/admin-guard.service';
 
 import {HomeModule} from './home/home.module';
 import {MenuModule} from './menu/menu.module';
+import {DishesModule} from './dishes/dishes.module';
 import {PostsModule} from './posts/posts.module';
 import {LocationModule} from './location/location.module';
 import {SharedModule} from './shared/shared.module';
@@ -38,6 +39,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
     AppRoutingModule,
     HomeModule,
     MenuModule,
+    DishesModule,
     PostsModule,
     LocationModule,
     SharedModule,

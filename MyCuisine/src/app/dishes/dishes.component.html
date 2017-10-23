@@ -1,0 +1,21 @@
+<app-title [title]="'Dishes'" [subTitle]="'A wide variety and only freshest of ingredients'"></app-title>
+<app-subheader [navItemTop]="'Dishes'"
+               [navItemMiddle]="middleNavItem"
+               [activePosition]="1" [searchPlaceholder]="'Search dishes ...'"></app-subheader>
+
+<section class="container-dishes container-fluid">
+  <div class="row">
+    <p *ngIf="dishes.length === 0">No posts in this section</p>
+
+    <ul class="menu-list list-group">
+      <li *ngFor="let dish of dishes" class="menu-item list-group-item">
+        <div class="price-tag"><span class="price">{{dish.price}}</span></div>
+        <img class="food-image img-thumbnail pull-left" src="../../assets/images/food-placeholder-1.jpeg" alt="food"/>
+        <h5>{{dish.name}}</h5>
+        <p>{{dish.description}}</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<app-loader [isLoading]="isLoading"></app-loader>
