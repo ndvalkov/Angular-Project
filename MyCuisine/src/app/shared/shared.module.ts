@@ -18,6 +18,7 @@ import { DecorateTitlePipe } from './pipes/decorate-title.pipe';
 import {SimpleNotificationsModule} from 'angular2-notifications/dist';
 import { ToPostCategoryPipe } from './pipes/to-post-category.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { FilterPostsByCategoryPipe } from './pipes/filter-posts-by-category.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     SearchComponent,
     DecorateTitlePipe,
     ToPostCategoryPipe,
-    TruncatePipe
+    TruncatePipe,
+    FilterPostsByCategoryPipe
   ],
   exports: [
     HeaderComponent,
@@ -54,7 +56,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     MaskPasswordPipe,
     DecorateTitlePipe,
     ToPostCategoryPipe,
-    TruncatePipe
+    TruncatePipe,
+    FilterPostsByCategoryPipe
   ]
 })
 export class SharedModule { }

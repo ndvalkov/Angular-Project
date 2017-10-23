@@ -30,7 +30,6 @@ export class AllPostsComponent implements OnInit {
         .then(res => {
           this.isLoading = false;
           this.posts = res;
-          console.log(this.posts);
         })
         .catch(err => {
           this.isLoading = false;
