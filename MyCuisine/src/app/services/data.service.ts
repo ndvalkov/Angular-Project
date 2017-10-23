@@ -130,7 +130,7 @@ export class DataService {
     })
       .toPromise()
       .then(resp => {
-        return resp.json().result();
+        return resp.json();
       });
   }
 

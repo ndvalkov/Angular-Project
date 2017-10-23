@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {User} from '../models/user.model';
 import {DataService} from '../services/data.service';
 import {NotificationService} from '../services/notification.service';
-import {Router} from '@angular/router';
+import {Dish, DishType} from '../models/dish.model';
 
 @Component({
   selector: 'app-admin',
@@ -10,17 +9,21 @@ import {Router} from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  user: User = new User();
+  dish: Dish = new Dish();
   @ViewChild('f') form: any;
   isLoading: boolean;
   options = {
     position: ['bottom', 'right'],
-    timeOut: 1000,
+    timeOut: 2000,
     lastOnBottom: true
   };
+  dishTypes: string[] = Object.keys(DishType)
+    .map(key => DishType[key])
+    .filter(value => typeof value === 'string') as string[];
+  selectedType: string = this.dishTypes[0];
+
   constructor(private readonly dataService: DataService,
-              private readonly notificationService: NotificationService,
-              private readonly router: Router) { }
+              private readonly notificationService: NotificationService) { }
 
   ngOnInit() {
   }
@@ -29,24 +32,24 @@ export class AdminComponent implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
 
-      // this.dataService
-      //   .signIn(this.user)
-      //   .then(res => {
-      //     this.isLoading = false;
-      //     this.notificationService.showSuccess('Logged in successfully');
-      //     this.form.reset();
-      //   })
-      //   .catch(err => {
-      //     this.isLoading = false;
-      //     this.notificationService.showError(err._body);
-      //   });
+      this.dish.type = DishType[this.selectedType];
+      console.log(this.dish);
+      this.dataService
+        .createDish(this.dish)
+        .then(res => {
+          this.isLoading = false;
+          this.notificationService.showSuccess('Dish added successfully');
+          this.form.reset();
+        })
+        .catch(err => {
+          this.isLoading = false;
+          this.notificationService.showError(err._body);
+        });
     }
   }
 
-  destroyed($event) {
-    if ($event.type !== 'error') {
-      this.router.navigate(['/home'], { queryParams: { 'refresh': 1 } });
-    }
+  setDishType(category: string) {
+    this.selectedType = category;
   }
 }
 

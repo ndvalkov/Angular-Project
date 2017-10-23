@@ -1,10 +1,13 @@
-.container-login {
-  min-height: 527px;
+.container-add-dish {
+  min-height: 1402px;
   background-color: #ebe9d0;
   width: 100%;
   padding-left: 16%;
-  padding-right: 16%;
+  padding-right: 18%;
   padding-top: 43px;
+  font-family: 'Georgia', san-serif, serif;
+  font-size: 14px;
+  color: rgb(68, 41, 23);
 }
 
 .btn-submit {
@@ -24,14 +27,25 @@
   border-width: 0.8px;
 }
 
-.btn-submit:focus {
-  outline: 0;
+.form-add-dish .dropdown-toggle {
+  background-color: transparent;
+  border-color: #fff;
+  border-style: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
 
-.form-login label {
-  font-family: 'Georgia', san-serif, serif;
-  font-size: 14px;
-  color: rgb(68, 41, 23);
-  text-transform: uppercase;
-  padding: 0;
+.dropdown-menu li {
+  padding: 10px;
+  text-align: center;
+}
+
+.dropdown-menu li a {
+  cursor: pointer;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #769C5A;
+  color: white;
 }
