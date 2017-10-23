@@ -6,11 +6,6 @@
   margin-top: 36px;
 }
 
-.comments-list {
-  margin-top: 24px;
-  padding-right: 28px;
-}
-
 .comment-author {
   font-family: 'League Gothic', san-serif, serif;
   font-size: 22px;
@@ -26,11 +21,10 @@
   line-height: 174%;
 }
 
-
 .author-and-content {
   border: 1px solid #e5e2c6;
-  border-radius: 10px;
   background-color: white;
+  border-radius: 10px;
   padding: 23px;
   padding-left: 27px;
 }
@@ -67,7 +61,8 @@
 }
 
 .comments-list-item {
-  margin-bottom: 29px;
+  background-color: transparent;
+  border: none;
 }
 
 .comment-arrow {
