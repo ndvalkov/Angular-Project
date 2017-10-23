@@ -4,6 +4,8 @@ import {HomeComponent} from './home/home.component';
 import {LocationComponent} from './location/location.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import {AdminComponent} from './admin/admin.component';
+import {AdminGuardService} from './services/admin-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -12,6 +14,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'menu', loadChildren: './menu/menu.module#MenuModule'},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuardService]},
   {path: 'posts', loadChildren: './posts/posts.module#PostsModule', data: {preload: true}},
 
   // Fallback when no prior route is matched

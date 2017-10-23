@@ -9,10 +9,12 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
 
 import {DataService} from './services/data.service';
 import {NotificationService} from './services/notification.service';
 import {AuthGuardService} from './services/auth-guard.service';
+import {AdminGuardService} from './services/admin-guard.service';
 
 import {HomeModule} from './home/home.module';
 import {MenuModule} from './menu/menu.module';
@@ -26,7 +28,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
     FormsModule
   ],
   exports: [ SimpleNotificationsModule ],
-  providers: [DataService, NotificationService, AuthGuardService],
+  providers: [DataService, NotificationService, AuthGuardService, AdminGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
