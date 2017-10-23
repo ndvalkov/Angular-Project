@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationService} from '../../services/notification.service';
 import {DataService} from '../../services/data.service';
-import {Router} from '@angular/router';
-import {Post} from '../../models/post.model';
+import {Post, PostCategory} from '../../models/post.model';
 
 @Component({
   selector: 'app-all-posts',
@@ -18,6 +17,11 @@ export class AllPostsComponent implements OnInit {
   };
 
   posts: Post[] = [];
+  categoryFilter = 'Category';
+  categories: string[] = Object.keys(PostCategory)
+    .map(key => PostCategory[key])
+    .filter(value => typeof value === 'string') as string[];
+  middleNavItem = 'All';
 
   constructor(private readonly dataService: DataService,
               private readonly notificationService: NotificationService) { }
@@ -39,5 +43,10 @@ export class AllPostsComponent implements OnInit {
 
   onSearchQueryResult(res: any) {
     this.posts = res;
+  }
+
+  setCategory(category: string) {
+    this.categoryFilter = category;
+    this.middleNavItem = category;
   }
 }

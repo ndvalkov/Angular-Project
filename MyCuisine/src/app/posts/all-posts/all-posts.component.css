@@ -131,6 +131,51 @@
   border-width: 0.8px;
 }
 
+.dropup {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  color: #000000;
+  font-family: "Georgia", sans-serif, serif;
+  background-color: white;
+  border-radius: 23px;
+  border-left-style: none;
+  border-right-style: none;
+  border-width: 0.8px;
+  min-width: 100px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.dropup-toggle {
+  background-color: transparent;
+  border-color: #fff;
+  border-style: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+.dropup-menu li {
+  padding: 10px;
+  text-align: center;
+}
+
+.dropup-menu li a {
+  cursor: pointer;
+  color: #000000;
+  font-family: "Georgia", sans-serif, serif;
+}
+
+.dropup-menu li a:hover {
+  background-color: #769C5A;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/*Responsive*/
+
 @media (min-width: 576px) and (max-width: 991px) {
   .container-posts {
     padding-left: 5%;

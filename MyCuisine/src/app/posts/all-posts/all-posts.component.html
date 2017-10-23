@@ -1,5 +1,21 @@
-<app-title [title]="'Posts'" [subTitle]="'All blog posts'"></app-title>
-<app-subheader (onSearchQuery)="onSearchQueryResult($event)" [navItemTop]="'All Posts'" [activePosition]="0" [searchPlaceholder]="'Search posts'"></app-subheader>
+<app-title [title]="'Posts'" [subTitle]="'Blog posts'"></app-title>
+<app-subheader (onSearchQuery)="onSearchQueryResult($event)"
+               [navItemTop]="'Posts'"
+               [navItemMiddle]="middleNavItem"
+               [activePosition]="1" [searchPlaceholder]="'Search posts'"></app-subheader>
+
+<!--dropup not working, jQuery -->
+<div class="dropup">
+  <button class="btn btn-default hidden dropup-toggle" type="button" data-toggle="dropup">{{categoryFilter}}
+    <span class="caret"></span></button>
+  <ul class="dropup-menu">
+    <li *ngFor="let category of categories">
+      <a (click)="setCategory(category)">
+        {{category | capitalize}}
+      </a>
+    </li>
+  </ul>
+</div>
 
 <button class="btn-add-post" [routerLink]="['/posts/add']">Add Post</button>
 
@@ -7,7 +23,7 @@
   <div class="row">
     <p *ngIf="posts.length === 0" class="no-posts">No posts in this section</p>
 
-    <div *ngFor="let post of posts | filterPostsByCategory : 'fod'" class="post col-md-4">
+    <div *ngFor="let post of posts | filterPostsByCategory : categoryFilter" class="post col-md-4">
       <div class="container-post">
         <h5 class="post-title">{{post?.title}}</h5>
         <div class="post-sub"><span class="post-author">{{post?.author}}</span><span class="post-category">{{post?.category | toPostCategory}}</span></div>
