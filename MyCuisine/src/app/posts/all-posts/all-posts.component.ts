@@ -37,4 +37,8 @@ export class AllPostsComponent implements OnInit {
           this.notificationService.showError(err._body);
         });
   }
+
+  onSearchQueryResult(res: any) {
+    this.posts = res;
+  }
 }

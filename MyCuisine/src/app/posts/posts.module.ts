@@ -9,6 +9,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import {FormsModule} from '@angular/forms';
 import {PushNotificationsModule, SimpleNotificationsModule} from 'angular2-notifications/dist';
 import {NotificationService} from '../services/notification.service';
+import { SearchPostComponent } from './search-post/search-post.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import {NotificationService} from '../services/notification.service';
     SimpleNotificationsModule,
     PushNotificationsModule
   ],
-  declarations: [PostComponent, CommentComponent, AllPostsComponent, AddPostComponent],
+  declarations: [PostComponent, CommentComponent, AllPostsComponent, AddPostComponent, SearchPostComponent],
   providers: [NotificationService]
 })
 export class PostsModule {

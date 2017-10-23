@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-subheader',
@@ -13,6 +13,8 @@ export class SubheaderComponent implements OnInit {
   bottomHidden = true;
   @Input() activePosition: number;
   @Input() searchPlaceholder = 'Search this website ...';
+
+  @Output() onSearchQuery = new EventEmitter<string>();
 
   get navItemTop(): string {
     return this._navItemTop;
@@ -47,5 +49,9 @@ export class SubheaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSearchQueryResult(res: any) {
+    this.onSearchQuery.emit(res);
   }
 }

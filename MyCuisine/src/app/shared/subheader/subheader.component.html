@@ -7,7 +7,10 @@
       <li class="post" *ngIf="!bottomHidden" [ngClass]="{active: activePosition === 2}">{{navItemBottom}}</li>
     </ul>
 
-    <app-search [placeholder]="searchPlaceholder" [minlength]="3" [maxLength]="30"></app-search>
+    <app-search [placeholder]="searchPlaceholder"
+                (onSearchQuery)="onSearchQueryResult($event)"
+                [minlength]="3"
+                [maxLength]="30"></app-search>
 
   </div>
 </section>
