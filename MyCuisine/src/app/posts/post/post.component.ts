@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {NotificationService} from '../../services/notification.service';
 import {Subscription} from 'rxjs/Subscription';
-import {Post} from '../../models/post.model';
+import {Post, PostCategory} from '../../models/post.model';
 import {UserComment} from '../../models/comment.model';
 
 @Component({
@@ -24,6 +24,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   post: Post;
   comments: UserComment[] = [];
+  category: string;
 
   constructor(private readonly dataService: DataService,
               private readonly notificationService: NotificationService,
@@ -42,6 +43,7 @@ export class PostComponent implements OnInit, OnDestroy {
         .then(res => {
           this.isLoading = false;
           this.post = res[0];
+          this.category = this.post ? PostCategory[this.post.category] : 'No category';
           this.comments = res[1];
         })
         .catch(err => {

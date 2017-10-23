@@ -1,6 +1,6 @@
 <app-title [title]="post?.title" [subTitle]="post?.author"></app-title>
 <app-subheader [navItemTop]="'Posts'"
-               [navItemMiddle]="post?.category ? (post?.category | capitalize) : 'Category'"
+               [navItemMiddle]="category ? (category | capitalize) : 'Category'"
                [navItemBottom]="post?.title ? (post?.title | truncate:[15, '...']) : 'Post'"
                [activePosition]="2"
                [searchPlaceholder]="'Search posts...'"></app-subheader>
@@ -17,11 +17,10 @@
       </div>
 
       <div class="container-comments">
-        <h3 class="comments-title"><span class="comment-count">30</span> comments</h3>
+        <h3 class="comments-title"><span class="comment-count">{{comments.length}}</span> comments</h3>
         <ul class="comments-list list-group">
-          <app-comment></app-comment>
-          <app-comment></app-comment>
-          <app-comment></app-comment>
+          <app-comment *ngFor="let comment of comments"
+                       [commentAuthor]="comment.author" [commentDate]="comment.date">{{comment.comment}}</app-comment>
         </ul>
 
         <h3 class="leave-a-comment">Leave a comment</h3>

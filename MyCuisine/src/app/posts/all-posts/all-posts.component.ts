@@ -20,8 +20,7 @@ export class AllPostsComponent implements OnInit {
   posts: Post[] = [];
 
   constructor(private readonly dataService: DataService,
-              private readonly notificationService: NotificationService,
-              private readonly router: Router) { }
+              private readonly notificationService: NotificationService) { }
 
   ngOnInit() {
       this.isLoading = true;
